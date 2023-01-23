@@ -1,41 +1,57 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap');
+
+html {
+  box-sizing: border-box;
+  font-family: 'Karla', Helvetica, sans-serif, Verdana;  
+}
+
+body{
+  background: #F5F7FB;
+  color: #293264;
+  margin: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  min-height: 100vh;
+} 
+
+.button { 
+  display: block;
+  margin: 2rem auto;
+  width: 150px;
+  height: 50px;
+  background: #4D5B9E;
+  font-size: large;
+  color: white;
+  font-weight: 600;
+  border-radius: 20px;
+  font-family: 'Karla', Helvetica, sans-serif, Verdana;  
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.yellow {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.white {
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
