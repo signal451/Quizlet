@@ -6,7 +6,6 @@ function Overlay(props) {
   const startQuiz = (e) => {
     e.preventDefault();
     setRender(true);
-   console.log("clicked");
   };
 
   return (
