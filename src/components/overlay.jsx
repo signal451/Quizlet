@@ -13,7 +13,7 @@ function Overlay(props) {
       <div>
         <h1> Quizzical </h1>
         <p> Trivia quiz application that you can enjoy &nbsp; 😂 </p>
-        <Button onClick={startQuiz} title="Start quiz"/>
+        <Button onClick={startQuiz} title="Start quiz" />
       </div>
     </div>
   );

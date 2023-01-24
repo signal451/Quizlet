@@ -1,18 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap");
 
 html {
   box-sizing: border-box;
-  font-family: 'Karla', Helvetica, sans-serif, Verdana;  
+  font-family: "Karla", Helvetica, sans-serif, Verdana;
 }
 
-body{
-  background: #F5F7FB;
+body {
+  background: #f5f7fb;
   color: #293264;
   margin: 0;
   font-weight: 500;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -22,19 +24,19 @@ body{
   align-items: center;
   text-align: center;
   min-height: 100vh;
-} 
+}
 
-.button { 
+.button {
   display: block;
   margin: 2rem auto;
   width: 150px;
   height: 50px;
-  background: #4D5B9E;
+  background: #4d5b9e;
   font-size: large;
   color: white;
   font-weight: 600;
   border-radius: 20px;
-  font-family: 'Karla', Helvetica, sans-serif, Verdana;  
+  font-family: "Karla", Helvetica, sans-serif, Verdana;
   border: none;
   outline: none;
   cursor: pointer;
@@ -66,26 +68,24 @@ body{
 .container .question > p {
   font-weight: 500;
   font-size: 1rem;
- 
 }
 
 .question {
-  border-bottom: 1px solid #DBDEF0;
+  border-bottom: 1px solid #dbdef0;
   padding-bottom: 1rem;
 }
 
 .options {
   display: flex;
   flex-wrap: wrap;
-  
 }
 
-.options .block {
+/* .options .block {
   max-width: 300px;
   max-height: 80px;
-  border: 1px solid #4D5B9E;
+  border: 1px solid #4d5b9e;
   border-radius: 50px;
-  cursor: pointer; 
+  cursor: pointer;
   padding-left: 0.7rem;
   padding-right: 0.7rem;
   margin-right: 0.5rem;
@@ -98,15 +98,14 @@ body{
 .options .block > p {
   font-size: 0.9rem;
   margin: 0;
-  padding: 0.5rem
-}
+  padding: 0.5rem;
+} */
 
 @media screen and (min-width: 600px) {
   .container {
-    width: 80%
+    width: 80%;
   }
 }
-
 
 @media screen and (min-width: 1200px) {
   .container {
@@ -127,15 +126,4 @@ body{
     font-size: 1.3rem;
     font-weight: 600;
   }
-
-
-  
 }
-
-
-
-
-
-
-
-
