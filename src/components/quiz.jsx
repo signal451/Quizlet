@@ -4,6 +4,13 @@ import Block from "./blocks";
 function Quiz() {
   const [quiz, setQuiz] = useState([]);
 
+  /*  TODO 
+      * Restrict multiple selection
+      * Select and Unselect
+      * Check answers button
+      * 
+  */
+
   const triviaGenerate = (data) => {
     const arr = data
       .map((ele) => {
@@ -48,8 +55,14 @@ function Quiz() {
       let arr = element.answers;
       for(let i = 0; i < arr.length; i++){
         if(arr[i].body === value) {
-          arr[i].isSelected = true
-          break;
+          if(arr[i].isSelected) {
+             arr[i].isSelected = false
+             break;
+          }
+          else {
+            arr[i].isSelected = true
+            break;
+          }
         }
       }
       return {...element, answers: arr}

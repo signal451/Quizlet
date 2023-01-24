@@ -25,7 +25,6 @@ const Text = styled.p`
 
 function Block(props) {
   let background_color = props.state ? "#D6DBF5" : "#FFFFFF";
-
   return (
     <Answer onClick={props.onClick} color={background_color}>
       <Text>{props.value}</Text>
