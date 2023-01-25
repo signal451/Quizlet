@@ -4,12 +4,11 @@ import Block from "./blocks";
 function Quiz() {
   const [quiz, setQuiz] = useState([]);
 
-  /*  TODO 
-      * Restrict multiple selection
-      * Select and Unselect
-      * Check answers button
-      * 
-  */
+  /*  TODO
+   * Check answers button
+   * Check if correctly answers
+   * Restart
+   */
 
   const triviaGenerate = (data) => {
     const arr = data
@@ -51,25 +50,31 @@ function Quiz() {
   }, []);
 
   const answer_select = (value) => {
-    const answers = quiz.map((element) => {
-      let arr = element.answers;
-      for(let i = 0; i < arr.length; i++){
-        if(arr[i].body === value) {
-          if(arr[i].isSelected) {
-             arr[i].isSelected = false
-             break;
+    const answers = quiz
+      .map((element) => {
+        if (element.id === value[0]) {
+          let arr = element.answers;
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i].isSelected) {
+              arr[i].isSelected = false;
+            }
           }
-          else {
-            arr[i].isSelected = true
+          return { ...element, answers: arr };
+        }
+        return { ...element };
+      })
+      .map((element) => {
+        let arr = element.answers;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i].body === value[1]) {
+            arr[i].isSelected = true;
             break;
           }
         }
-      }
-      return {...element, answers: arr}
-    })
+        return {...element, answers: arr}
+      });
 
-    setQuiz(answers)
-    console.log(quiz);
+      setQuiz(answers)
   };
 
   return (
@@ -84,7 +89,7 @@ function Quiz() {
                   <Block
                     key={index}
                     value={val.body}
-                    onClick={() => answer_select(val.body)}
+                    onClick={() => answer_select([ele.id, val.body])}
                     state={val.isSelected}
                   />
                 );
