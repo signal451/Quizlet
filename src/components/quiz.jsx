@@ -4,13 +4,7 @@ import Button from "./button";
 
 function Quiz() {
   const [quiz, setQuiz] = useState([]);
-  // const [count, setCounter] = useState(0)
-
-  /*  TODO
-   * Button
-   * Check if correctly answers
-   * Restart
-   */
+  const [reset, setReset] = useState("Check answers");
 
   const triviaGenerate = (data) => {
     const arr = data
@@ -40,23 +34,51 @@ function Quiz() {
     return arr;
   };
 
-
   const checkAnswers = () => {
     let counter = 0;
     quiz.forEach((element) => {
       let arr = element.answers;
-      for(let i = 0; i < arr.length; i++) {
-        if(arr[i].isSelected) {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].isSelected) {
           counter++;
           break;
         }
       }
     });
-    console.log(counter)
-  }
 
-
-
+    if (counter === 5) {
+      if (reset === "Play again") {
+        fetch(
+          "https://the-trivia-api.com/api/questions?categories=film_and_tv&limit=5&difficulty=medium"
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            let temp = triviaGenerate(data);
+            setQuiz(temp);
+            setReset("Check answers")
+          });
+      } else {
+        const answers = quiz.map((element) => {
+          let arr = element.answers;
+          for (let i = 0; i < arr.length; i++) {
+            if (element.correctAnswer === arr[i].body) {
+              // doesn't matter we need to show correct answer
+              arr[i].isSelected = "correct";
+            }
+            if (
+              arr[i].isSelected === true &&
+              element.correctAnswer !== arr[i].body
+            ) {
+              arr[i].isSelected = "incorrect";
+            }
+          }
+          return { ...element, answers: arr };
+        });
+        setQuiz(answers);
+        setReset("Play again");
+      }
+    }
+  };
 
   useEffect(() => {
     fetch(
@@ -91,10 +113,10 @@ function Quiz() {
             break;
           }
         }
-        return {...element, answers: arr}
+        return { ...element, answers: arr };
       });
 
-      setQuiz(answers)
+    setQuiz(answers);
   };
 
   return (
@@ -119,7 +141,7 @@ function Quiz() {
         );
       })}
 
-      <Button title="Check answers" onClick={checkAnswers}/>
+      <Button title={reset} onClick={checkAnswers} />
     </div>
   );
 }

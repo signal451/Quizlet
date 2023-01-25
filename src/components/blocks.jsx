@@ -14,7 +14,7 @@ const Answer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${props => props.color};
+  background: ${(props) => props.color};
 `;
 
 const Text = styled.p`
@@ -24,7 +24,20 @@ const Text = styled.p`
 `;
 
 function Block(props) {
-  let background_color = props.state ? "#D6DBF5" : "#FFFFFF";
+  let background_color = "#FFFFFF";
+  switch (props.state) {
+    case true:
+      background_color = "#D6DBF5";
+      break;
+    case "correct":
+      background_color = "#94D7A2";
+      break;
+    case "incorrect":
+      background_color = "#F8BCBC";
+      break;
+    default:
+      background_color = "#FFFFFF";
+  }
   return (
     <Answer onClick={props.onClick} color={background_color}>
       <Text>{props.value}</Text>
