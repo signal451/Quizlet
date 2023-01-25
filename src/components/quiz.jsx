@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import Block from "./blocks";
+import Button from "./button";
 
 function Quiz() {
   const [quiz, setQuiz] = useState([]);
+  // const [count, setCounter] = useState(0)
 
   /*  TODO
-   * Check answers button
+   * Button
    * Check if correctly answers
    * Restart
    */
@@ -37,6 +39,24 @@ function Quiz() {
 
     return arr;
   };
+
+
+  const checkAnswers = () => {
+    let counter = 0;
+    quiz.forEach((element) => {
+      let arr = element.answers;
+      for(let i = 0; i < arr.length; i++) {
+        if(arr[i].isSelected) {
+          counter++;
+          break;
+        }
+      }
+    });
+    console.log(counter)
+  }
+
+
+
 
   useEffect(() => {
     fetch(
@@ -98,6 +118,8 @@ function Quiz() {
           </div>
         );
       })}
+
+      <Button title="Check answers" onClick={checkAnswers}/>
     </div>
   );
 }

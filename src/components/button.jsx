@@ -2,8 +2,7 @@ function Button(props) {
   return (
     <div className="btn-layout">
       <button className="button" onClick={props.onClick}>
-        {" "}
-        {props.title}{" "}
+        {props.title}
       </button>
     </div>
   );
